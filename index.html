@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <title>aiode converter</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #c7a0f7;
+        }
+
+        input,
+        select,
+        button,
+        span {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 16pt;
+            color: #7635c7;
+        }
+
+        #input-body {
+            margin: auto;
+            margin-top: 20%;
+            padding: 20px;
+            width: 80%;
+        }
+
+        #input-body input[type="text"] {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid #7635c7;
+        }
+
+        #input-body select {
+            border: none;
+        }
+
+        #input-body button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        #input-body button:hover {
+            background-color: #7635c7;
+            color: white;
+        }
+
+        #output-body {
+            background-color: white;
+            color: darkgray;
+            display: none;
+            padding: 20px;
+            margin: auto;
+            width: 80%;
+        }
+
+        #output-body button {
+            background-color: transparent;
+            text-align: center;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="input-body">
+        <input type="text" id="play-input" placeholder="What do you want to play?" autofocus />
+        <select id="source-input" name="Source">
+            <option value="spotify">Spotify</option>
+            <option value="youtube">YouTube</option>
+        </select>
+        <button type="button" onclick="doTheThing();">Tell Aiode</button>
+    </div>
+    <div id="output-body">
+        <span id="output-span"></span>
+        <button id="copy-button" onclick="copyToClipboard();">📋</button>
+    </div>
+</body>
+
+<script>
+    var source = ``;
+    var toPlay = ``;
+
+    function doTheThing() {
+        let outputBody = document.getElementById("output-body");
+        let output = document.getElementById("output-span");
+        let copyButton = document.getElementById("copy-button");
+
+        toPlay = document.getElementById("play-input").value;
+        source = document.getElementById("source-input").value;
+
+        outputBody.style.display = "initial";
+        output.innerHTML = `/queue ${source}:True input:${toPlay}`;
+    }
+
+    function copyToClipboard() {
+        navigator.clipboard.writeText(`/queue ${source}:True input:${toPlay}`);
+    }
+</script>
+
+</html>

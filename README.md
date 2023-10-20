@@ -1,5 +1,5 @@
 # aiode-prompter
-my friends want it to be easier to make commands for our discord bot
+my friends want it to be easier to make commands for our discord bot.
 
 ## how to use
 
